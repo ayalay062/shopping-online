@@ -1,0 +1,3 @@
+<button (click)="startAdding()">add product</button>
+<app-create-product [selectedProduct]="selectedProduct" *ngIf="isAdding || selectedProduct" (submit)="stopAdding()"></app-create-product>
+

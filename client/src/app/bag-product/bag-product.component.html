@@ -1,0 +1,17 @@
+<div>
+    <label>product name</label>
+    <span appHighlight
+    [content]="product.productId.name" 
+    [searchTerm]="searchText" 
+    [caseSensitive]="false">>
+    </span>
+    <img src="http://localhost:4000/{{product.productId.image}}" width="100" height="100"/>
+<div>qty {{product.qty}}</div>
+<div>price {{product.productId.price}}</div>
+<div>total price {{product.qty * product.productId.price}}</div>
+<div *ngIf="!disChanges">
+    <button [disabled]="product.qty>=25" (click)="changeQty(product.qty+1)">+</button>
+    <button [disabled]="product.qty==1" (click)="changeQty(product.qty-1)">-</button>
+    <button (click)="remove()">X</button>
+</div>
+</div>

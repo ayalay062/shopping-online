@@ -1,0 +1,16 @@
+<div>
+  <form [formGroup]="form" (ngSubmit)="login()">
+    <label>
+      Email:
+      <input type="email" formControlName="email">
+    </label>
+    <label>
+      Password:
+      <input type="password" formControlName="password">
+    </label>
+    
+    <button type="submit" [disabled]="!form.valid">LOGIN</button>
+  </form>
+  <button (click)="goToRegister()">I'm not registered yet</button>
+  
+</div>

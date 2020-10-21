@@ -1,0 +1,6 @@
+<nav>Logo
+    Hello<span *ngIf="user$ | async  as user"> {{user.firstName}}</span>
+    <span *ngIf="!user$ | async  as user"> Guest</span>
+    <a href="#!">Contact Us</a>
+</nav>
+<router-outlet></router-outlet>

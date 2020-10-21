@@ -1,0 +1,26 @@
+<form *ngIf="form" [formGroup]="form" (ngSubmit)="createOrder()">
+    Shipping Details:
+    <label>
+        City:
+        <input (dblclick)="fill('city')" formControlName="city">
+    </label>
+    <label>
+        Street:
+        <input (dblclick)="fill('street')" formControlName="street">
+    </label>
+    <label>
+        Shipping Date:
+        <input type="date" formControlName="deliveryDate">
+        <div *ngIf="form.get('deliveryDate').errors?.notAvailable">
+            You must select another day, all shipments are busy
+        </div>
+    </label>
+    Payment:
+    <label>
+        Credit Card:
+        <input formControlName="LastDigitsCreditCard">
+    </label>
+
+    <button type="submit" [disabled]="!form.valid">Order</button>
+</form>
+<app-order-created-modal [receipt]="receipt" (closeModal)="closeModal()" [show]="showSuccessModal" ></app-order-created-modal>

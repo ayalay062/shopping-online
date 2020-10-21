@@ -1,0 +1,55 @@
+<form [formGroup]="form" *ngIf="step===1" (ngSubmit)="next()">
+    <label>
+        Email:
+        <input type="email" formControlName="email">
+        <div *ngIf="form.get('email').errors?.required">
+            email is required.
+        </div>
+        <div *ngIf="form.get('email').errors?.email">
+            invalid email.
+        </div>
+    </label>
+
+    <label>
+        Password:
+        <input type="password" formControlName="password">
+        <div *ngIf="form.get('password').errors?.required">
+            password is required.
+        </div>
+    </label>
+
+    <label>
+        Confirm Password:
+        <input type="password" formControlName="confirmPassowrd">
+        <div *ngIf="form.errors">
+            passwords don't match
+        </div>
+    </label>
+    <button type="submit" [disabled]="!form.valid">NEXT</button>
+</form>
+
+<form [formGroup]="nextForm" *ngIf="step===2" (ngSubmit)="register()">
+    <label>
+        First Name:
+        <input type="text" formControlName="firstName">
+    </label>
+
+    <label>
+        Last Name:
+        <input type="text" formControlName="lastName">
+    </label>
+
+    <label>
+        City:
+        <input type="text" formControlName="city">
+    </label>
+
+    <label>
+        Street:
+        <input type="text" formControlName="street">
+    </label>
+
+
+
+    <button type="submit" [disabled]="!nextForm.valid">REGISTER</button>
+</form>

@@ -1,0 +1,27 @@
+<form [formGroup]="form" (ngSubmit)="create()">
+    <label>
+        name:
+        <input type="text" formControlName="name">
+      </label>
+    
+      <label>
+       category-id:
+       <select formControlName="categoryId" [value]="selectedProduct?.categoryId">
+         <option></option>
+         <option [value]="category._id" *ngFor="let category of categories">{{category.name}}</option>
+       </select>
+      </label>
+
+      <label>
+        price:
+         <input type="number" formControlName="price">
+       </label>
+
+       <label>
+        image:
+         <input type="file" class="custom-file-input" id="customFile" 
+         (change)="onFileSelect($event)" #UploadFileInput>
+       </label>
+      
+      <button type="submit" [disabled]="!form.valid">{{action.toUpperCase()}}</button>
+</form>

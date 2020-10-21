@@ -1,0 +1,19 @@
+<div>
+    <h2>shopping-bag</h2>
+    <div class="form-group" *ngIf="disChanges" >
+        <label for="search-text">Search Text</label>
+        <input type="email" class="form-control" id="search-text" aria-describedby="search-text" 
+        [(ngModel)]="searchText" placeholder="Enter text to search" 
+        autofocus>
+    </div>
+    <div  id="bag">
+        <div>
+            <app-bag-product [searchText]="searchText" [disChanges]="this.disChanges" *ngFor="let product of products" [product]="product"></app-bag-product>
+        </div>
+    </div>
+    <div>Total price: {{total}}</div>
+    <div *ngIf="!disChanges">
+        <button (click)="deleteAll()">Remove all products</button>
+        <button (click)="goToOrder()">Order</button>
+    </div>    
+</div>
