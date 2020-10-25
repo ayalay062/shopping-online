@@ -1,9 +1,20 @@
-<nav><form>search product<input #productName/>
-    <button (click)="search(productName.value)">search</button>
-    <div *ngIf="searchResults$ | async; let searchResults">
-        <p *ngFor="let result of searchResults">{{result.name}}</p>
-    </div>
-</form></nav>
-<app-shopping-bag *ngIf="user && user.role!=='admin'" [disChanges]="false"></app-shopping-bag>
-<app-admin-actions [selectedProduct]="selectedProduct" *ngIf="user && user.role==='admin'"></app-admin-actions>
+<nav>
+    <form>
+        <mat-form-field appearance="fill">
+            <mat-label>Search product:</mat-label>
+            <input autocomplete="autocomplete" #productName type="text" matInput placeholder="search" />
+        </mat-form-field>
+        <button class="btn-gold" (click)="search(productName.value)">SEARCH</button>
+        <div *ngIf="searchResults$ | async; let searchResults">
+            <p *ngFor="let result of searchResults">{{ result.name }}</p>
+        </div>
+    </form>
+</nav>
+<div class="shopping-bag-wrapper">
+
+
+    <app-shopping-bag *ngIf="user && user.role !== 'admin'" [disChanges]="false"></app-shopping-bag>
+
+    <app-admin-actions [selectedProduct]="selectedProduct" *ngIf="user && user.role === 'admin'"></app-admin-actions>
+</div>
 <app-products-list (onSelect)="selectProduct($event)"></app-products-list>

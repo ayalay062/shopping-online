@@ -1,0 +1,10 @@
+.add-to-cart {
+    vertical-align: top;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.product-list {
+    margin-left: 20px;
+    margin-top: 50px;
+}

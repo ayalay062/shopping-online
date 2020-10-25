@@ -1,26 +1,29 @@
-<form *ngIf="form" [formGroup]="form" (ngSubmit)="createOrder()">
-    Shipping Details:
-    <label>
-        City:
-        <input (dblclick)="fill('city')" formControlName="city">
-    </label>
-    <label>
-        Street:
-        <input (dblclick)="fill('street')" formControlName="street">
-    </label>
-    <label>
-        Shipping Date:
-        <input type="date" formControlName="deliveryDate">
-        <div *ngIf="form.get('deliveryDate').errors?.notAvailable">
-            You must select another day, all shipments are busy
-        </div>
-    </label>
-    Payment:
-    <label>
-        Credit Card:
-        <input formControlName="LastDigitsCreditCard">
-    </label>
+<form class="form-wrapper-100" *ngIf="form" [formGroup]="form" (ngSubmit)="createOrder()">
+    <h3> Shipping Details:</h3>
 
-    <button type="submit" [disabled]="!form.valid">Order</button>
+    <mat-form-field appearance="fill">
+        <mat-label>City</mat-label>
+        <input autocomplete="autocomplete" (dblclick)="fill('city')" formControlName="city" type="text" matInput placeholder="city" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Street</mat-label>
+        <input autocomplete="autocomplete" (dblclick)="fill('street')" formControlName="street" type="text" matInput placeholder="street" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label> Shipping Date:</mat-label>
+        <input autocomplete="autocomplete" formControlName="deliveryDate" type="date" matInput placeholder="date" />
+        <mat-error *ngIf="form.get('deliveryDate').errors?.notAvailable"> You must select another day, all shipments are busy.</mat-error>
+    </mat-form-field>
+
+    <h3> Payment:</h3>
+    <mat-form-field appearance="fill">
+        <mat-label> Credit Card:</mat-label>
+        <input autocomplete="autocomplete" formControlName="LastDigitsCreditCard" type="text" matInput placeholder="LastDigitsCreditCard" />
+
+    </mat-form-field>
+
+
+
+    <button class="btn-gold" type="submit" [disabled]="!form.valid">Order</button>
 </form>
-<app-order-created-modal [receipt]="receipt" (closeModal)="closeModal()" [show]="showSuccessModal" ></app-order-created-modal>
+<app-order-created-modal [receipt]="receipt" (closeModal)="closeModal()" [show]="showSuccessModal"></app-order-created-modal>

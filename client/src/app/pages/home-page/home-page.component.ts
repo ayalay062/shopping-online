@@ -11,27 +11,29 @@ import { IOrder } from 'src/models/order.model';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  styleUrls: ['./home-page.component.css'],
 })
-
 export class HomePageComponent implements OnInit {
   bag$: Observable<IBag>;
   order$: Observable<IOrder>;
 
-  constructor(private store: Store<IState>) { }
+  constructor(private store: Store<IState>) {}
   user$: Observable<IUser>;
-  isLogIn=true
+  isLogIn = true;
   ngOnInit(): void {
-    this.user$ = this.store.select(state => state.user.user);
-    this.store.select(state => state.user.user._id)
-    .subscribe(id => {
-      this.store.dispatch(getBag({ userId: id }));
-      this.store.dispatch(getOrder({ userId: id }));
-      this.bag$ = this.store.select(state => state.bag.bag);
-      this.order$ = this.store.select(state => state.order.order);
-    })
+    this.user$ = this.store.select((state) => state.user.user);
+    this.store
+      .select((state) => state.user.user?._id)
+      .subscribe((id) => {
+        if (id) {
+          this.store.dispatch(getBag({ userId: id }));
+          this.store.dispatch(getOrder({ userId: id }));
+          this.bag$ = this.store.select((state) => state.bag.bag);
+          this.order$ = this.store.select((state) => state.order.order);
+        }
+      });
   }
-toggleType(){
-  this.isLogIn=!this.isLogIn;
-}
+  toggleType() {
+    this.isLogIn = !this.isLogIn;
+  }
 }

@@ -1,55 +1,64 @@
-<form [formGroup]="form" *ngIf="step===1" (ngSubmit)="next()">
-    <label>
-        Email:
-        <input type="email" formControlName="email">
-        <div *ngIf="form.get('email').errors?.required">
-            email is required.
-        </div>
-        <div *ngIf="form.get('email').errors?.email">
-            invalid email.
-        </div>
-    </label>
+<form class="form-wrapper" [formGroup]="form" *ngIf="step===1" (ngSubmit)="next()">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input autocomplete="autocomplete" formControlName="email" type="email" matInput 
+      placeholder="Email" />
+      <mat-error *ngIf="form.get('email').errors?.required"> Email is required.</mat-error>
+      <mat-error *ngIf="form.get('email').errors?.email">   Invalid email.</mat-error>
 
-    <label>
-        Password:
-        <input type="password" formControlName="password">
-        <div *ngIf="form.get('password').errors?.required">
-            password is required.
-        </div>
-    </label>
+ 
+  </mat-form-field>
 
-    <label>
-        Confirm Password:
-        <input type="password" formControlName="confirmPassowrd">
-        <div *ngIf="form.errors">
-            passwords don't match
-        </div>
-    </label>
-    <button type="submit" [disabled]="!form.valid">NEXT</button>
-</form>
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input autocomplete="autocomplete" formControlName="password" type="password" matInput 
+    placeholder="Password" />
+    <mat-error *ngIf="form.get('password').errors?.required"> Password is required.</mat-error>
+ 
+    
+</mat-form-field>
 
-<form [formGroup]="nextForm" *ngIf="step===2" (ngSubmit)="register()">
-    <label>
-        First Name:
-        <input type="text" formControlName="firstName">
-    </label>
 
-    <label>
-        Last Name:
-        <input type="text" formControlName="lastName">
-    </label>
+<mat-form-field appearance="fill">
 
-    <label>
-        City:
-        <input type="text" formControlName="city">
-    </label>
+    <mat-label>  Confirm Password:</mat-label>
+        <input autocomplete="autocomplete" type="password" formControlName="confirmPassowrd" matInput>
+        <mat-error *ngIf="form.get('password').errors || form.get('confirmPassowrd').errors"> Password don't match.</mat-error>
+</mat-form-field>
 
-    <label>
-        Street:
-        <input type="text" formControlName="street">
-    </label>
+
+    <button class="btn-gold" type="submit" [disabled]="!form.valid">NEXT</button>
+    </form>
+    
 
 
 
-    <button type="submit" [disabled]="!nextForm.valid">REGISTER</button>
+<form class="form-wrapper"  [formGroup]="nextForm" *ngIf="step===2" (ngSubmit)="register()">
+   
+    <mat-form-field appearance="fill">
+        <mat-label> First Name:</mat-label>
+        <input autocomplete="autocomplete" formControlName="firstName" type="text" matInput 
+        placeholder="FirstName" /> 
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
+        <mat-label>  Last Name:</mat-label>
+        <input autocomplete="autocomplete" formControlName="lastName" type="text" matInput 
+        placeholder="LastName" /> 
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>  City:</mat-label>
+        <input autocomplete="autocomplete" formControlName="city" type="text" matInput 
+        placeholder="City" /> 
+    </mat-form-field>
+   
+    <mat-form-field appearance="fill">
+        <mat-label>  Street:</mat-label>
+        <input autocomplete="autocomplete" formControlName="street" type="text" matInput 
+        placeholder="Street" /> 
+    </mat-form-field>
+   
+
+    <button class="btn-gold" type="submit" [disabled]="!nextForm.valid">REGISTER</button>
 </form>

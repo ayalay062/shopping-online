@@ -1,17 +1,23 @@
-<div>
-    <label>product name</label>
-    <span appHighlight
-    [content]="product.productId.name" 
-    [searchTerm]="searchText" 
-    [caseSensitive]="false">>
+<div class="bag-product">
+
+    <span class="product-name" appHighlight [content]="product.productId.name" [searchTerm]="searchText" [caseSensitive]="false">>
     </span>
-    <img src="http://localhost:4000/{{product.productId.image}}" width="100" height="100"/>
-<div>qty {{product.qty}}</div>
-<div>price {{product.productId.price}}</div>
-<div>total price {{product.qty * product.productId.price}}</div>
-<div *ngIf="!disChanges">
-    <button [disabled]="product.qty>=25" (click)="changeQty(product.qty+1)">+</button>
-    <button [disabled]="product.qty==1" (click)="changeQty(product.qty-1)">-</button>
-    <button (click)="remove()">X</button>
-</div>
+    <img src="http://localhost:4000/{{product.productId.image}}" width="50" height="60" />
+    <div># {{product.qty}}</div>
+    <div>Price: {{product.productId.price}}$</div>
+    <div>Total price: {{product.qty * product.productId.price}}$</div>
+    <div *ngIf="!disChanges">
+        <button mat-icon-button [disabled]="product.qty>=25" (click)="changeQty(product.qty+1)">
+            <mat-icon  >add_circle_outline</mat-icon>
+         </button>
+
+        <button mat-icon-button [disabled]="product.qty==1" (click)="changeQty(product.qty-1)">
+            <mat-icon  >remove_circle_outline</mat-icon>
+         </button>
+        <button mat-icon-button (click)="remove()" class="remove-btn">
+            <mat-icon >clear</mat-icon>
+         </button>
+
+        <!-- <button (click)="remove()">X</button> -->
+    </div>
 </div>

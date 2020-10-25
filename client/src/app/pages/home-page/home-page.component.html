@@ -1,30 +1,34 @@
-<p>home-page works!</p>
+<div class="bg">
+    <div class="shopping-bag-wrapper">
 
-<app-login *ngIf="isLogIn" (register)="toggleType()"></app-login>
-<app-register *ngIf="!isLogIn" (login)="toggleType()"></app-register>
-<div *ngIf="user$ | async; let user">
-  <div *ngIf="user.role!=='admin';else adminBlock">
-    <div *ngIf="bag$ | async; let bag; else orderBlock">
-      You have open cart from {{bag.date}}
-      <app-shopping-bag [disChanges]="false"></app-shopping-bag>
+
+        <div *ngIf="user$ | async; let user">
+            <div *ngIf="user && user.role !== 'admin'; else adminBlock">
+                <div *ngIf="bag$ | async; let bag; else: orderBlock">
+                    <h3>You have open cart from {{ bag.date | date }}</h3>
+
+                    <app-shopping-bag [disChanges]="false"></app-shopping-bag>
+                </div>
+                <ng-template #orderBlock>
+                    <div *ngIf="order$ | async; let order; else: welcome">
+                        <h3>Your last purchase was on {{ order.deliveryDate | date }}</h3>
+                    </div>
+                </ng-template>
+                <ng-template #welcome>
+                    <div>Welcome to your first shopping!</div>
+                </ng-template>
+
+                <a routerLink="/products" *ngIf="bag$ | async; else elseBlock">Continue shopping</a
+        >
+        <ng-template #elseBlock
+          ><a routerLink="/products">Start shopping</a></ng-template>
+            </div>
+        </div>
+        <ng-template #adminBlock>
+            <a routerLink="/products">Manage products</a>
+        </ng-template>
+
+        <app-home-details *ngIf="user$ | async as user" [id]="user._id ? user._id : 'guest'"></app-home-details>
     </div>
-    <ng-template  #orderBlock>
-      <div *ngIf="order$ | async; let order; else welcome">
-        Your last purchase was on {{order.deliveryDate}}
-      </div>
-    </ng-template>
-    <ng-template #welcome>
-      <div>
-        Welcome to your first shopping!
-      </div>
-    </ng-template>
-    
-    <a routerLink="/products" *ngIf="bag$ | async; else elseBlock">continue shopping</a>
-    <ng-template #elseBlock><a routerLink="/products">start shopping</a></ng-template>
-  </div>
 </div>
-<ng-template #adminBlock>
-  <a routerLink="/products" >manage products</a>
-</ng-template>
-<app-about></app-about>
-<app-home-details *ngIf="user$ | async  as user" [id]="user._id?user._id:'guest'"></app-home-details>
+<div class="bg-after"></div>

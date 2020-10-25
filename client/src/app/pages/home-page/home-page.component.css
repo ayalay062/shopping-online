@@ -1,0 +1,44 @@
+.shopping-bag-wrapper {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.shopping {
+    font-size: 24px;
+    font-weight: bolder;
+    margin: auto;
+    display: block;
+    text-align: center;
+    margin: 30px;
+    color: black;
+}
+
+a {
+    color: #ceb081;
+    font-size: 22px;
+    line-height: 44px;
+    cursor: pointer;
+}
+
+.bg {
+    background-image: url('../../../assets/bg.jpg');
+    background-size: cover;
+    width: 100%;
+    height: calc(100% - 64px);
+    position: relative;
+}
+
+.bg * {
+    z-index: 1;
+    position: relative;
+}
+
+.bg-after {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 64px);
+    background-color: rgba(255, 255, 255, 0.8);
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+}

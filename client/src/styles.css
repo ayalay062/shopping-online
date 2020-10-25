@@ -1,4 +1,145 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+span:focus,
+div:focus {
+    outline: none!important;
+}
+
+.btn-black {
+    padding: 0px 20px;
+    background-color: #000;
+    color: white;
+    font-size: 16px;
+    line-height: 26px;
+    padding-bottom: 2px;
+    margin: auto;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-gold {
+    padding: 0px 20px;
+    background-color: #ceb081;
+    color: white;
+    font-size: 12px;
+    line-height: 24px;
+    padding-bottom: 0px;
+    margin: auto;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-gold:disabled {
+    background-color: #ccc;
+    color: white;
+}
+
+.mat-form-field-label mat-label {
+    color: #ceb081;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    border-bottom: 1px solid #ceb081;
+}
+
+.form-wrapper .mat-form-field {
+    display: block;
+    width: 200px;
+    text-align: left;
+    margin: auto;
+}
+
+.color-black {
+    color: black;
+}
+
+.form-wrapper,
+.form-wrapper-100 {
+    text-align: center;
+    margin: 0px auto;
+    border: 1px solid #ceb081;
+    background-color: #fff;
+    padding: 30px;
+    direction: ltr;
+    color: #ceb081!important;
+    box-shadow: 0 0 14px 1px #ceb081 inset;
+    flex-grow: 1;
+    width: 33%;
+    position: relative;
+    font-size: 16px;
+    line-height: 28px;
+}
+
+.form-wrapper-100 {
+    width: 80%;
+    margin: 30px auto;
+}
+
+.form-wrapper-100 button {
+    display: block;
+}
+
+.form-wrapper-100 .mat-form-field {
+    display: inline-block;
+    width: 200px;
+    text-align: left;
+    margin: auto;
+    margin: 0px 20px;
+}
+
+.div-wrapper-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-flow: row wrap;
+}
+
+.div-wrapper-flex .mat-card {
+    flex-grow: 1;
+    max-width: 15%;
+    flex: 15%;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.div-wrapper-flex .mat-card-header-text {
+    width: 100%;
+}
+
+.div-wrapper-flex .mat-card-header .mat-card-title {
+    font-size: 15px;
+    height: 70px;
+}
+
+mat-icon.mat-icon {
+    cursor: pointer;
+}
+
+.mat-icon-button.mat-button-disabled.mat-button-disabled {
+    color: rgba(0, 0, 0, .3);
+}
+
+.mat-select-value-text,
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled),
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+    color: #ceb081;
+}
+
+.mat-select .mat-form-field-appearance-fill .mat-form-field-flex {
+    border-bottom: 1px solid #ceb081!important;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: #ceb081!important;
+}

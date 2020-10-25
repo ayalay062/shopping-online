@@ -10,15 +10,16 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ShoppingPageComponent } from './pages/shopping-page/shopping-page.component';
 import { OrderPageComponent } from './pages/order-page/order-page.component';
 import { AuthGuard } from './auth.guard';
+import { AboutComponent } from './about/about.component';
 
 
 const routes: Routes = [
   {
-    path: '', component: HomePageComponent,
+    path: '', component: AboutComponent,
 
   },
   {
-     path: 'register', component: LoginComponent,
+     path: 'register', component: RegisterComponent,
     children:[
       {path:"", component: RegisterComponent},
       {path:"next-step", component: RegisterComponent},
@@ -28,7 +29,16 @@ const routes: Routes = [
     path: 'products', component: ShoppingPageComponent, canActivate: [AuthGuard]
   },
   {
+    path: 'login', component: LoginComponent
+  },
+  {
     path: 'order', component: OrderPageComponent, 
+  },
+  {
+    path: 'home', component: HomePageComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'about', component: AboutComponent, 
   },
   {
     path: '**', redirectTo: 'products-list'

@@ -47,7 +47,7 @@ export class ProductsListComponent implements OnInit {
   }
 
   changeCategory(e) {
-    this.productsByCategory=this.products.filter(p=>p.categoryId===e.target.value)
+    this.productsByCategory=this.products.filter(p=>p.categoryId===e.value)
   }
   
   onProductClick(product) {

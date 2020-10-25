@@ -1,0 +1,22 @@
+<!-- <nav>
+  Logo Hello
+  <span *ngIf="user$ | async as user"> {{ user.firstName }}</span>
+  <span *ngIf="!user$ | async as user"> Guest</span>
+  <a href="#!">Contact Us</a>
+</nav> -->
+
+<div class="div-wrapper">
+    <mat-toolbar class="toolbar" color="primary">
+        <span class="link-header-top" routerLink="/home">Baby </span>
+        <span class="link-header" routerLink="/home" routerLinkActive="active_link">Home |</span>
+        <span class="link-header" routerLink="/about" routerLinkActive="active_link">About |</span>
+        <span class="link-header" routerLink="/products" routerLinkActive="active_link">Products |</span>
+        <span class="link-header" routerLink="/register" routerLinkActive="active_link">Register |</span>
+        <span class="link-header" routerLink="/login" routerLinkActive="active_link">Login </span>
+
+        <span class="div-name" *ngIf="user$ | async as user">Hello {{ user.firstName }}</span>
+        <span class="div-name" *ngIf="!user$ | async as user"> Guest</span>
+
+        <mat-icon class="kupa" (click)="openDialogBasket()">local_grocery_store</mat-icon>
+    </mat-toolbar>
+</div>

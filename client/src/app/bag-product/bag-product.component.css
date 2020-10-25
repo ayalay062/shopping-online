@@ -1,6 +1,34 @@
 p {
     font-family: Lato;
-  }
-  ::ng-deep .text-highlight {
+}
+
+ ::ng-deep .text-highlight {
     background: yellow;
-  }
+}
+
+.bag-product {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    justify-content: space-between;
+    width: 100%;
+    line-height: 60px;
+}
+
+.bag-product div {
+    min-width: 100px;
+    text-align: center;
+}
+
+.bag-product img {
+    border-radius: 50%;
+}
+
+.product-name {
+    min-width: 420px;
+    font-weight: bold;
+    color: #ceb081;
+}
+
+.remove-btn {
+    margin-left: 30px;
+}

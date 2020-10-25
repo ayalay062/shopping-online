@@ -1,16 +1,21 @@
 <div>
-  <form [formGroup]="form" (ngSubmit)="login()">
-    <label>
-      Email:
-      <input type="email" formControlName="email">
-    </label>
-    <label>
-      Password:
-      <input type="password" formControlName="password">
-    </label>
-    
-    <button type="submit" [disabled]="!form.valid">LOGIN</button>
+  <form class="form-wrapper" [formGroup]="form" (ngSubmit)="login()">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input autocomplete="autocomplete" formControlName="email" type="email" matInput 
+      placeholder="Email" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input autocomplete="autocomplete" formControlName="password" type="password" matInput 
+    placeholder="Password" />
+</mat-form-field>
+  
+    <button class="btn-gold" type="submit" [disabled]="!form.valid">LOGIN</button>
+    <br>
+    <a class="a-cls" (click)="goToRegister()">I'm not registered yet</a>
   </form>
-  <button (click)="goToRegister()">I'm not registered yet</button>
+ 
   
 </div>

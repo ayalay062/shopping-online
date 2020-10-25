@@ -1,0 +1,12 @@
+.shopping-bag-wrapper {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.shopping-bag-wrapper a {
+    display: block;
+    margin-top: 20px;
+    font-size: 20px;
+    line-height: 30px;
+    color: #ceb081;
+}

@@ -1,19 +1,21 @@
-<div>
-    <h2>shopping-bag</h2>
-    <div class="form-group" *ngIf="disChanges" >
-        <label for="search-text">Search Text</label>
-        <input type="email" class="form-control" id="search-text" aria-describedby="search-text" 
-        [(ngModel)]="searchText" placeholder="Enter text to search" 
-        autofocus>
+<div *ngIf="total > 0">
+    <h2>Shopping-bag</h2>
+    <div class="form-group" *ngIf="disChanges">
+        <mat-form-field appearance="fill">
+            <mat-label>Search product:</mat-label>
+            <input autocomplete="autocomplete" [(ngModel)]="searchText" type="text" matInput placeholder="search" autofocus/>
+        </mat-form-field>
+        <button class="btn-gold" (click)="search(productName.value)">SEARCH</button>
     </div>
-    <div  id="bag">
+    <div id="bag">
         <div>
-            <app-bag-product [searchText]="searchText" [disChanges]="this.disChanges" *ngFor="let product of products" [product]="product"></app-bag-product>
+            <app-bag-product [searchText]="searchText" [disChanges]="this.disChanges" *ngFor="let product of products" [product]="product" class="bag-product"></app-bag-product>
         </div>
     </div>
-    <div>Total price: {{total}}</div>
+    <h3>Total price: {{total}}$</h3>
     <div *ngIf="!disChanges">
-        <button (click)="deleteAll()">Remove all products</button>
-        <button (click)="goToOrder()">Order</button>
-    </div>    
+        <button class="btn-black" (click)="deleteAll()">Remove all products</button>
+        <button class="btn-black" style="margin-left: 50px;" (click)="goToOrder()">Order</button>
+    </div>
 </div>
+<h4 *ngIf="total == 0">There are no products in your shopping cart</h4>

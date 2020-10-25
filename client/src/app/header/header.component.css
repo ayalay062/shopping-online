@@ -1,0 +1,56 @@
+.link-header {
+    font-size: 20px;
+    line-height: 40px;
+    margin: 2px 5px;
+    padding: 0px;
+    cursor: pointer;
+    font-weight: 100;
+}
+
+.link-header-top {
+    font-size: 32px;
+    color: #ceb081;
+    margin-top: -5px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.menu-wrapper {
+    text-align: left;
+}
+
+.mat-radio-button~.mat-radio-button {
+    margin-left: 16px;
+}
+
+.kupa {
+    float: right;
+    position: absolute;
+    right: 10px;
+}
+
+.toolbar {
+    background-color: black;
+    text-align: left;
+}
+
+.color {
+    color: #554730;
+}
+
+.div-name {
+    float: right;
+    display: block;
+    position: absolute;
+    right: 50px;
+    font-size: 16px;
+    line-height: 40px;
+    margin: 2px 5px;
+    padding: 0px;
+    cursor: pointer;
+    font-weight: 100;
+}
+
+.active_link {
+    color: #ceb081;
+}
