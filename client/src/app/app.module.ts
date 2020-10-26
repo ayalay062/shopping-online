@@ -43,8 +43,6 @@ import { AuthService } from './auth.service';
 import { CookieService } from 'ngx-cookie-service';
 import { OrderCreatedModalComponent } from './order-created-modal/order-created-modal.component';
 
-// import { MDBBootstrapModule } from 'angular-bootstrap-md';
-
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
