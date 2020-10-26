@@ -31,20 +31,13 @@ export class HeaderComponent implements OnInit {
     this.user$ = this.store.select(state => state.user.user);
   }
 
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(OrderPageComponent, {
-      width: '250px',
-      // data: {name: this.name, animal: this.animal}
-    });
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-      // this.animal = result;
-    });
-  }
   openDialogBasket() {
-    const dialogRef = this.dialog.open(ShoppingBagComponent);
+    const dialogRef = this.dialog.open(ShoppingBagComponent, {
+   
+       data: {modal: true}
+    });
     dialogRef.afterClosed().subscribe((result) => {
+      
       console.log(`Dialog result: ${result}`);
     });
     dialogRef.afterClosed().subscribe((result) => {

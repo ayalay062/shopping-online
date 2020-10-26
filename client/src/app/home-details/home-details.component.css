@@ -1,4 +1,27 @@
-.content{
+.content {
     margin-top: 50px;
     display: block;
+}
+
+.num-wrap {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    background-color: #ceb081;
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    line-height: 80px;
+    font-weight: 100;
+}
+
+.wrap {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 80px;
+    margin: 20px;
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: bold;
 }

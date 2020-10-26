@@ -1,6 +1,13 @@
 .shopping-bag-wrapper {
     width: 80%;
     margin-left: 10%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.child {
+    flex: 1;
+    width: 50%;
 }
 
 .shopping {
@@ -15,8 +22,8 @@
 
 a {
     color: #ceb081;
-    font-size: 22px;
-    line-height: 44px;
+    font-size: 30px;
+    line-height: 60px;
     cursor: pointer;
 }
 
@@ -41,4 +48,9 @@ a {
     bottom: 0;
     left: 0;
     z-index: 0;
+}
+
+.content {
+    margin-top: 50px;
+    display: block;
 }

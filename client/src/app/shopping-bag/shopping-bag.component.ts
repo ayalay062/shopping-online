@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { IState } from '../app.module'
 import { ISelectedProducts } from 'src/models/selectedProducts.model';
 import { Router } from '@angular/router';
 import { removeFromBag } from '../store/actions/bag.actions';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-shopping-bag',
@@ -18,7 +19,11 @@ export class ShoppingBagComponent implements OnInit {
   @Input() disChanges: boolean;
   total: number=0;
   searchText = '';
-  constructor(private state: Store<IState>, private router: Router) { }
+
+  isModal = false;
+  constructor(private state: Store<IState>, private router: Router,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialogRef: MatDialogRef<ShoppingBagComponent>) { }
 
   ngOnInit(): void {
     this.state.select(state => {
@@ -32,9 +37,21 @@ export class ShoppingBagComponent implements OnInit {
         if (bag?.products) this.products.forEach(p => this.total+=p.qty * p.productId.price);
       }
     }});
+  
+    if (this.data && this.data.modal === true) {
+      this.isModal =true;
+    }
+
+  }
+  close() {
+  if(this.dialogRef){
+    this.dialogRef.close({ data: 'Order' });
+  }
+   
   }
   goToOrder(): void {
     this.router.navigateByUrl('/order');
+    this.close();
   }
 
   deleteAll() {

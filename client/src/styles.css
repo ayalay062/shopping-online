@@ -115,10 +115,11 @@ div:focus {
 
 .div-wrapper-flex .mat-card-header-text {
     width: 100%;
+    margin: 0px;
 }
 
 .div-wrapper-flex .mat-card-header .mat-card-title {
-    font-size: 15px;
+    font-size: 16px;
     height: 70px;
 }
 
@@ -142,4 +143,8 @@ mat-icon.mat-icon {
 
 .mat-form-field.mat-focused .mat-form-field-ripple {
     background-color: #ceb081!important;
+}
+
+.mat-dialog-container {
+    background: white;
 }

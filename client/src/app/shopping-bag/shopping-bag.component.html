@@ -1,5 +1,5 @@
 <div *ngIf="total > 0">
-  
+
     <div class="form-group" *ngIf="disChanges">
         <mat-form-field appearance="fill">
             <mat-label>Search product:</mat-label>
@@ -12,10 +12,11 @@
             <app-bag-product [searchText]="searchText" [disChanges]="this.disChanges" *ngFor="let product of products" [product]="product" class="bag-product"></app-bag-product>
         </div>
     </div>
-    <h3>Total price: {{total}}$</h3>
+    <br>
+    <h2><strong>Total price: {{total}}$</strong> </h2>
     <div *ngIf="!disChanges">
         <button class="btn-black" (click)="deleteAll()">Remove all products</button>
         <button class="btn-black" style="margin-left: 50px;" (click)="goToOrder()">Order</button>
     </div>
 </div>
-<h4 *ngIf="total == 0">There are no products in your shopping cart</h4>
+<h2 *ngIf="total == 0 && isModal" style="color:#ceb081">There are no products in your shopping cart</h2>

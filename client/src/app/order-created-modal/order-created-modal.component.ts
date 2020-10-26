@@ -34,7 +34,7 @@ export class OrderCreatedModalComponent implements OnInit {
     win.document.write('<link rel="stylesheet" href="../../../style.css">');
     win.document.write('<link rel="stylesheet" href="order-created-modal.component.css">');
     win.document.write('<style type="text/css">.style1{width: 100%;}.bag-product {'+
-  '    display: flex;  border-bottom: 1px solid #ccc;    justify-content: space-between;'+
+  '    display: flex;  border-bottom: 1px solid #ccc; justify-content: space-between;'+
   '    width: 100%; line-height: 60px; }  '+
  ' .bag-product div { min-width: 100px; text-align: center;'+
  ' } .bag-product img {   border-radius: 50%;  }'+

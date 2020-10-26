@@ -1,6 +1,5 @@
-<div *ngIf="show">
-    <h3>Your order has been successfully received</h3>
+<div *ngIf="show" class="content-wrap">
+    <h2>Your order has been successfully received</h2>
     <p>To download the receipt, click <a (click)="generateReceipt()" class="print">here</a></p>
     <button class="btn-black" (click)="close()">OK</button>
-    <br>
 </div>

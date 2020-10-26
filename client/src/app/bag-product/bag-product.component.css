@@ -15,7 +15,7 @@ p {
 }
 
 .bag-product div {
-    min-width: 100px;
+    min-width: 80px;
     text-align: center;
 }
 
@@ -24,11 +24,15 @@ p {
 }
 
 .product-name {
-    min-width: 420px;
+    min-width: 400px;
     font-weight: bold;
     color: #ceb081;
 }
 
 .remove-btn {
-    margin-left: 30px;
+    margin-left: 20px;
+}
+
+.mat-icon-button {
+    width: 30px;
 }

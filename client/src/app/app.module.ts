@@ -44,7 +44,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { OrderCreatedModalComponent } from './order-created-modal/order-created-modal.component';
 
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -116,7 +116,10 @@ export interface IState {
     MatToolbarModule,
     MatSelectModule
   ],
-  providers: [AuthGuard, AuthService, CookieService],
+  providers: [AuthGuard, AuthService, CookieService,
+      { provide: MAT_DIALOG_DATA, useValue: {} },
+      { provide: MatDialogRef, useValue: {} }
+    ],
   bootstrap: [AppComponent],
   entryComponents: [OrderCreatedModalComponent]
 

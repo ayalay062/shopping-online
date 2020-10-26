@@ -1,30 +1,31 @@
 <div class="bg">
     <div class="shopping-bag-wrapper">
-
-
         <div *ngIf="user$ | async; let user">
-            <div *ngIf="user && user.role !== 'admin'; else adminBlock">
+            <div *ngIf="user && user.role !== 'admin'; else adminBlock" class="content">
                 <div *ngIf="bag$ | async; let bag; else: orderBlock">
-                    <h3>You have open cart from {{ bag.date | date }}</h3>
-
+                    <h2>You have open cart from {{ bag.date | date }}</h2>
                     <app-shopping-bag [disChanges]="false"></app-shopping-bag>
                 </div>
-                <ng-template #orderBlock>
-                    <div *ngIf="order$ | async; let order; else: welcome">
-                        <h3>Your last purchase was on {{ order.deliveryDate | date }}</h3>
-                    </div>
-                </ng-template>
-                <ng-template #welcome>
-                    <div>Welcome to your first shopping!</div>
-                </ng-template>
+                <div>
 
-                <a routerLink="/products" *ngIf="bag$ | async; else elseBlock">Continue shopping</a
-        >
+
+                    <ng-template #orderBlock>
+                        <div *ngIf="order$ | async; let order; else: welcome">
+                            <h2>Your last purchase was on {{ order.deliveryDate | date }}</h2>
+                        </div>
+                    </ng-template>
+                    <ng-template #welcome>
+                        <h2>Welcome to your first shopping!</h2>
+                    </ng-template>
+
+                    <a routerLink="/products" *ngIf="bag$ | async; else elseBlock">Continue shopping</a
+        > 
         <ng-template #elseBlock
           ><a routerLink="/products">Start shopping</a></ng-template>
+                </div>
             </div>
         </div>
-        <ng-template #adminBlock>
+        <ng-template #adminBlock class="child">
             <a routerLink="/products">Manage products</a>
         </ng-template>
 
