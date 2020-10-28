@@ -1,64 +1,62 @@
 <form class="form-wrapper" [formGroup]="form" *ngIf="step===1" (ngSubmit)="next()">
     <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input autocomplete="autocomplete" formControlName="email" type="email" matInput 
-      placeholder="Email" />
-      <mat-error *ngIf="form.get('email').errors?.required"> Email is required.</mat-error>
-      <mat-error *ngIf="form.get('email').errors?.email">   Invalid email.</mat-error>
-
- 
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Password</mat-label>
-    <input autocomplete="autocomplete" formControlName="password" type="password" matInput 
-    placeholder="Password" />
-    <mat-error *ngIf="form.get('password').errors?.required"> Password is required.</mat-error>
- 
-    
-</mat-form-field>
+        <mat-label>Email</mat-label>
+        <input autocomplete="autocomplete" formControlName="email" type="email" matInput placeholder="Email" />
+        <mat-error *ngIf="form.get('email').errors?.required"> Email is required.</mat-error>
+        <mat-error *ngIf="form.get('email').errors?.email"> Invalid email.</mat-error>
 
 
-<mat-form-field appearance="fill">
+    </mat-form-field>
 
-    <mat-label>  Confirm Password:</mat-label>
+    <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input autocomplete="autocomplete" formControlName="password" type="password" matInput placeholder="Password" />
+        <mat-error *ngIf="form.get('password').errors?.required"> Password is required.</mat-error>
+
+
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
+
+        <mat-label> Confirm Password:</mat-label>
         <input autocomplete="autocomplete" type="password" formControlName="confirmPassowrd" matInput>
         <mat-error *ngIf="form.get('password').errors || form.get('confirmPassowrd').errors"> Password don't match.</mat-error>
-</mat-form-field>
+    </mat-form-field>
 
 
     <button class="btn-gold" type="submit" [disabled]="!form.valid">NEXT</button>
-    </form>
-    
+</form>
 
 
 
-<form class="form-wrapper"  [formGroup]="nextForm" *ngIf="step===2" (ngSubmit)="register()">
-   
+
+<form class="form-wrapper" [formGroup]="nextForm" *ngIf="step===2" (ngSubmit)="register()">
+
     <mat-form-field appearance="fill">
         <mat-label> First Name:</mat-label>
-        <input autocomplete="autocomplete" formControlName="firstName" type="text" matInput 
-        placeholder="FirstName" /> 
+        <input autocomplete="autocomplete" formControlName="firstName" type="text" matInput placeholder="FirstName" />
     </mat-form-field>
 
 
     <mat-form-field appearance="fill">
-        <mat-label>  Last Name:</mat-label>
-        <input autocomplete="autocomplete" formControlName="lastName" type="text" matInput 
-        placeholder="LastName" /> 
+        <mat-label> Last Name:</mat-label>
+        <input autocomplete="autocomplete" formControlName="lastName" type="text" matInput placeholder="LastName" />
     </mat-form-field>
     <mat-form-field appearance="fill">
-        <mat-label>  City:</mat-label>
-        <input autocomplete="autocomplete" formControlName="city" type="text" matInput 
-        placeholder="City" /> 
+        <mat-label> City:</mat-label>
+
+        <mat-select formControlName="city">
+
+            <mat-option *ngFor="let city of cities" [value]="city">{{city}}</mat-option>
+        </mat-select>
     </mat-form-field>
-   
+
     <mat-form-field appearance="fill">
-        <mat-label>  Street:</mat-label>
-        <input autocomplete="autocomplete" formControlName="street" type="text" matInput 
-        placeholder="Street" /> 
+        <mat-label> Street:</mat-label>
+        <input autocomplete="autocomplete" formControlName="street" type="text" matInput placeholder="Street" />
     </mat-form-field>
-   
+
 
     <button class="btn-gold" type="submit" [disabled]="!nextForm.valid">REGISTER</button>
 </form>

@@ -1,11 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
-import { completeLogin, logout } from '../actions/user.actions';
+import { completeLogin, loginError, logout } from '../actions/user.actions';
 import { IUser } from '../../../models/user.model';
 
 export interface IUserState {
     isLoggedIn: boolean;
     user: IUser | null;
     role: string;
+    error: string;
     // order: IOrder|null;
     // bag: IBag|null;
 
@@ -14,11 +15,11 @@ export interface IUserState {
 
 const getInitialState = (): IUserState => {
     const token = localStorage.getItem('token');
-    const user = localStorage.getItem('user');
     return {
         isLoggedIn: !!token,
-        user: user !== 'undefined' && JSON.parse(user),
+        user: undefined,
         role:'',
+        error: undefined,
         // order:null,
         // bag:null,
 
@@ -27,7 +28,10 @@ const getInitialState = (): IUserState => {
 
 export const userReducer = createReducer(getInitialState(),
     on(completeLogin, (state, { user }) => {
-        return { ...state, isLoggedIn: true, user };
+        return { ...state, isLoggedIn: true, user, error: null };
     }),
     on(logout, () => getInitialState()),
+    on(loginError, (state, error) => {
+        return { ...state, error: 'an error occured' };
+    })
 );

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { startLogin } from 'src/app/store/actions/user.actions';
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent  {
 
   constructor(private fb: FormBuilder, private store: Store<IState>, private router: Router) {   }
 
@@ -19,9 +19,6 @@ export class LoginComponent implements OnInit {
     password: this.fb.control('', [Validators.required, Validators.minLength(3)]),
   });
 
-  ngOnInit() {
-
-  }
 
 
   login() {

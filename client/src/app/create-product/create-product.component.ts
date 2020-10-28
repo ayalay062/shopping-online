@@ -1,10 +1,9 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IState } from '../app.module';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { createProduct, editProduct } from '../store/actions/products.actions';
 import { IProduct } from 'src/models/product.model';
-import { categories } from 'src/app/consts';
 import { ProductService } from '../services/product.service';
 import { ICategory } from 'src/models/category.model';
 
@@ -13,7 +12,7 @@ import { ICategory } from 'src/models/category.model';
   templateUrl: './create-product.component.html',
   styleUrls: ['./create-product.component.css']
 })
-export class CreateProductComponent implements OnInit {
+export class CreateProductComponent  {
   @ViewChild('UploadFileInput', { static: false }) uploadFileInput: ElementRef;
 
   @Output() submit = new EventEmitter();
@@ -21,7 +20,7 @@ export class CreateProductComponent implements OnInit {
   fileInputLabel: string;
   action: string = 'edit';
   categories: ICategory[];
-
+  message: string;
   form: FormGroup;
   constructor(private fb: FormBuilder, private store: Store<IState>, private productService: ProductService) {
     this.productService.getCategories().subscribe(categories => { console.log("categories", categories); this.categories = categories })
@@ -44,10 +43,6 @@ export class CreateProductComponent implements OnInit {
     this.fileInputLabel = file.name;
     this.form.get('image').setValue(file);
   }
-  ngOnInit(): void {
-
-  }
-
   ngOnChanges() {
     this.buildForm();
   }
@@ -60,6 +55,8 @@ export class CreateProductComponent implements OnInit {
     } else {
       this.store.dispatch(createProduct(params));
     } 
+    this.message = `product successfully ${this.selectedProduct ? 'updated' : 'added'}`;
+  
     this.form.reset();
     this.submit.emit();
   }
@@ -69,11 +66,11 @@ export class CreateProductComponent implements OnInit {
     if (typeof image === 'string') {
       return this.createOrUpdateProduct(image);
     }
-      this.productService.uploadImage(image).subscribe({ next: 
-        res => {
-          return this.createOrUpdateProduct(`upload/${res.uploadedFile.filename}`);
-        }
-      })
+    this.productService.uploadImage(image).subscribe({ 
+      next: res => {
+        return this.createOrUpdateProduct(`upload/${res.uploadedFile.filename}`);
+      },
+    })
 
   }
 

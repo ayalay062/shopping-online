@@ -21,17 +21,16 @@ export class HomePageComponent implements OnInit {
   user$: Observable<IUser>;
   isLogIn = true;
   ngOnInit(): void {
-    this.user$ = this.store.select((state) => state.user.user);
-    this.store
-      .select((state) => state.user.user?._id)
-      .subscribe((id) => {
-        if (id) {
-          this.store.dispatch(getBag({ userId: id }));
-          this.store.dispatch(getOrder({ userId: id }));
-          this.bag$ = this.store.select((state) => state.bag.bag);
-          this.order$ = this.store.select((state) => state.order.order);
-        }
-      });
+    this.user$ = this.store.select(state => state.user.user);
+    this.user$
+    .subscribe(user => {
+      if (user) {
+        this.store.dispatch(getBag({ userId: user._id }));
+        this.store.dispatch(getOrder({ userId: user._id }));
+      }
+    })
+    this.bag$ = this.store.select(state => state.bag.bag);
+    this.order$ = this.store.select(state => state.order.order);
   }
   toggleType() {
     this.isLogIn = !this.isLogIn;

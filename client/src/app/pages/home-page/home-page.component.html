@@ -26,7 +26,9 @@
             </div>
         </div>
         <ng-template #adminBlock class="child">
-            <a routerLink="/products">Manage products</a>
+            <div *ngIf="user$ | async; let user;">
+                <a *ngIf="user.role==='admin'" routerLink="/products">Manage products</a>
+            </div>
         </ng-template>
 
         <app-home-details *ngIf="user$ | async as user" [id]="user._id ? user._id : 'guest'"></app-home-details>

@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-reciept',
   templateUrl: './reciept.component.html',
   styleUrls: ['./reciept.component.css']
 })
-export class RecieptComponent implements OnInit {
+export class RecieptComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

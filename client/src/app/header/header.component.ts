@@ -7,7 +7,8 @@ import { IState } from '../app.module';
 import { ping, startLogin } from '../store/actions/user.actions';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
-import { OrderPageComponent } from '../pages/order-page/order-page.component';
+import { getBag } from '../store/actions/bag.actions';
+import { getOrder } from '../store/actions/order.actions';
 
 @Component({
   selector: 'app-header',
@@ -25,6 +26,13 @@ export class HeaderComponent implements OnInit {
       console.log("user", userString);
       const user: IUser = JSON.parse(userString);
       this.store.dispatch(startLogin({ email: user.email, password: user.password}));
+      this.store.select(state => state.user.user)
+      .subscribe(user => {
+        if (user) {
+          this.store.dispatch(getBag({ userId: user._id }));
+          this.store.dispatch(getOrder({ userId: user._id }));
+        }
+      })
     }
   }
   ngOnInit(): void {

@@ -6,7 +6,6 @@ import { IProduct } from 'src/models/product.model';
 import { Observable } from 'rxjs';
 import { shopping } from '../store/actions/bag.actions';
 import { IUser } from 'src/models/user.model';
-import { categories } from '../consts';
 import { ICategory } from 'src/models/category.model';
 import { ProductService } from '../services/product.service';
 
@@ -47,7 +46,8 @@ export class ProductsListComponent implements OnInit {
   }
 
   changeCategory(e) {
-    this.productsByCategory=this.products.filter(p=>p.categoryId===e.value)
+    this.productsByCategory=this.products.filter(p=>p.categoryId===e.target.value);
+    this.category=this.categories.find(c => c._id === e.target.value)
   }
   
   onProductClick(product) {

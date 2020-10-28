@@ -1,21 +1,23 @@
-<div>
-  <form class="form-wrapper" [formGroup]="form" (ngSubmit)="login()">
-    <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input autocomplete="autocomplete" formControlName="email" type="email" matInput 
-      placeholder="Email" />
-  </mat-form-field>
+<div class="form-wrapper">
+    <form [formGroup]="form" (ngSubmit)="login()" *ngIf="!user">
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input autocomplete="autocomplete" formControlName="email" type="email" matInput placeholder="Email" />
+        </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Password</mat-label>
-    <input autocomplete="autocomplete" formControlName="password" type="password" matInput 
-    placeholder="Password" />
-</mat-form-field>
-  
-    <button class="btn-gold" type="submit" [disabled]="!form.valid">LOGIN</button>
-    <br>
-    <a class="a-cls" (click)="goToRegister()">I'm not registered yet</a>
-  </form>
- 
-  
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input autocomplete="autocomplete" formControlName="password" type="password" matInput placeholder="Password" />
+        </mat-form-field>
+
+        <button class="btn-gold" type="submit" [disabled]="!form.valid">LOGIN</button>
+        <br>
+        <a class="a-cls" (click)="goToRegister()">I'm not registered yet</a>
+    </form>
+
+    <div *ngIf="user">
+        <button class="btn-gold" (click)="logout()">LOGOUT</button>
+    </div>
+
+    <div>{{message}}</div>
 </div>

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup,  Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { IState } from '../app.module';
 import { startRegister } from '../store/actions/user.actions';
+import { getBag } from '../store/actions/bag.actions';
+import { getOrder } from '../store/actions/order.actions';
 
 @Component({
   selector: 'app-register',
@@ -20,6 +22,18 @@ export class RegisterComponent implements OnInit {
   return pass === confirmPass ? null : { notSame: true }     
 }
 step=1;
+cities=[
+  'Tel Aviv',
+  'Haifa',
+  'Jerusalem',
+  'Ramat Gan',
+  'Herzelia',
+  'Holon',
+  'Eylat',
+  'Zfat',
+  'Bat Yam',
+  'Kiryat Ono',
+];
 form = this.fb.group({
   email: this.fb.control('', [Validators.required, Validators.email]),
   password: this.fb.control('', [Validators.required, Validators.minLength(3)]),
@@ -43,6 +57,19 @@ register() {
   const { email,password} = this.form.value;
   const { firstName,lastName, city,street } = this.nextForm.value;
   this.store.dispatch(startRegister({firstName,lastName,  email,password, city,street}));
-  this.router.navigate(['/']);
+  this.store.select(state => state.user.user).subscribe(user => {
+    if (user) {
+      this.store.dispatch(getBag({ userId: user._id }));
+      this.store.dispatch(getOrder({ userId: user._id }));
+      this.store.select(state => state.bag.bag)
+        .subscribe(bag => {
+          if (user?.role === 'admin') {
+            this.router.navigate(['/products']);
+          }
+          location.reload();
+          this.router.navigate(['/']);
+        });     
+    } 
+  });
 }
 }

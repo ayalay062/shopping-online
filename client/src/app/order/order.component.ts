@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { createOrder, countDates } from '../store/actions/order.actions';
@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 import { ISelectedProducts } from 'src/models/selectedProducts.model';
 import { IOrder } from 'src/models/order.model';
 import { OrderService } from '../services/order.service';
-import { HttpClient } from '@angular/common/http';
 import { closeBag } from '../store/actions/bag.actions';
 import { debounceTime, map } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';

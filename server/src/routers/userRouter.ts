@@ -48,7 +48,7 @@ usersRouter.post('/login', async (req, res) => {
         // const orderOrBag = await User.findBagOrOrder(userId);
         res.send({ response: true, msg: "bag open", token, user })
     } catch (error) {
-        res.send({ response: false, msg: "server error" })
+        res.status(500).send("server error")
     }
 });
 

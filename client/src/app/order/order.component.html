@@ -19,6 +19,7 @@
     <mat-form-field appearance="fill">
         <mat-label> Credit Card:</mat-label>
         <input autocomplete="autocomplete" formControlName="LastDigitsCreditCard" type="text" matInput placeholder="LastDigitsCreditCard" />
+        <mat-error *ngIf="form.get('LastDigitsCreditCard').errors?.pattern"> Invalid credit card number.</mat-error>
 
     </mat-form-field>
 

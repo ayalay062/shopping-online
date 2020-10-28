@@ -1,15 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-admin-actions',
   templateUrl: './admin-actions.component.html',
   styleUrls: ['./admin-actions.component.css']
 })
-export class AdminActionsComponent implements OnInit {
+export class AdminActionsComponent {
 
   @Input() selectedProduct;
 
-  constructor() { }
+ 
 
   isAdding=false;
 
@@ -22,7 +22,5 @@ export class AdminActionsComponent implements OnInit {
   this.isAdding=false;
   }
 
-  ngOnInit(): void {
-  }
 
 }
