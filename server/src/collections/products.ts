@@ -13,7 +13,6 @@ export interface IProduct extends Document {
 export const ProductSchema = new Schema<IProduct>({
     name: String,
     categoryId: String,
-    // ------------לעשות ref לטבלת קטגוריות
     price: Number,
     image: String,
 });

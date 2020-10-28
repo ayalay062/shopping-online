@@ -12,13 +12,7 @@ export interface IProductsState {
     shopping_bag: IBagProduct[]
 }
 
-// export interface IProduct {
-//     _id: string;
-//     name: string;
-//     category: string;
-//     price: number;
-//     img: string
-// }
+
 
 export interface IBagProduct {
     _id: string,
@@ -27,15 +21,6 @@ export interface IBagProduct {
     total_price: number,
     qty: number
 }
-
-
-// export interface IAddedProduct {
-//     name: string;
-//     category: string;
-//     price: number;
-//     img: string
-
-// }
 
 
 
@@ -88,17 +73,5 @@ export const productsReducer = createReducer(initialState,
             products: state.products.map(p=> (product._id === p._id ? product: p )),
         })
     }),
-    // on(fetchProductsByCategory, (state, { categoryName }) => {
-    //     return ({
-    //         ...state,
-    //         isLoading: true,
-    //         products: product,
-    //     })
-    // }), on(fetchProductsByName, (state, { productName }) => {
-    //     return ({
-    //         ...state,
-    //         isLoading: true,
-    //         products: product,
-    //     })
-    // })
+
 )

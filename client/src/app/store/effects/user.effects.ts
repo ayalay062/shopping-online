@@ -50,20 +50,4 @@ export class UserEffects {
         )
     );
 
-    // ping$ = createEffect(() =>
-    //     this.actions$.pipe(
-    //         ofType(ping),
-    //         mergeMap(() =>
-    //             this.userService.ping()
-    //                 .pipe(
-    //                     map(({ firstName }) => {
-    //                         return completeLogin({ firstName });
-    //                     }),
-    //                     catchError((error: Error) => {
-    //                         return of({ type: 'error' });
-    //                     })
-    //                 )
-    //         )
-    //     )
-    // );
 }

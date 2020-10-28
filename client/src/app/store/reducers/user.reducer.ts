@@ -7,8 +7,6 @@ export interface IUserState {
     user: IUser | null;
     role: string;
     error: string;
-    // order: IOrder|null;
-    // bag: IBag|null;
 
 
 }
@@ -20,8 +18,6 @@ const getInitialState = (): IUserState => {
         user: undefined,
         role:'',
         error: undefined,
-        // order:null,
-        // bag:null,
 
     };
 };

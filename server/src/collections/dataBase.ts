@@ -17,4 +17,3 @@ const DataSchema = new Schema<IData>({
 })
 export const Data = model<IData>('data', DataSchema)
 
-// -------לבדוק אם יש צורך---------------

@@ -41,22 +41,7 @@ export class OrderEffects {
             )
         )
     )
-    // countDates$ = createEffect(() =>
-    //     this.actions$.pipe(
-    //         ofType(countDates),
-    //         mergeMap((actions) =>
-    //             this.orderService.countDates(actions.date)
-    //                 .pipe(
-    //                     map((countDate) => {
-    //                         return countedDates({ countDate });
-    //                     }),
-    //                     catchError((error: Error) => {
-    //                         return of({ type: 'error' });
-    //                     })
-    //                 )
-    //         )
-    //     )
-    // )
+
     getOrder$ = createEffect(() =>
         this.actions$.pipe(
             ofType(getOrder),

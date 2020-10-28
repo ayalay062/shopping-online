@@ -19,8 +19,6 @@ export const fetchedProductsByCategory = createAction('GET_PRODUCTS_BY_CATEGORY_
 export const fetchProductsByName = createAction('GET_PRODUCTS_BY_NAME_PENDING', props<{ productName: string }>())
 export const fetchedProductsByName = createAction('GET_PRODUCTS_BY_NAME_SUCCESS', props<{ product: IProduct }>())
 
-// export const fetchCountProducts = createAction('GET_COUNT_PRODUCTS')
-// export const fetchedCountProducts = createAction('GET_COUNT_PRODUCTS_SUCCESS', props<{ count: number }>())
 
 
 

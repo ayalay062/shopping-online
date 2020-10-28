@@ -15,7 +15,7 @@ import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   {
-    path: '', component: AboutComponent,
+    path: '', component: HomePageComponent, canActivate: [AuthGuard]
 
   },
   {

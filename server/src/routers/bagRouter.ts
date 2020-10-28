@@ -61,26 +61,9 @@ bagRouter.delete('/removeFromBag/', async (req, res) => {
 }
 );
 
-// bagRouter.get('/findBagOrOrder/:userId', async (req, res) => {
-//     const { user_id } = req.params;
-//     // const token = jwt.sign({ user_id }, JWT_SECRET);
-//     const bag = await Bag.findOne({ customerId: user_id }).exec();
-//     let productInBag;
-//     if (bag)
-//         productInBag = await SelectedProduct.find({ bagId: bag._id }).populate('productId')//בתוך שדה id יחזור כל המוצר
-//    //בקליינט 
-//         let lastOrder;
-//     if (!bag) {
-//         const sortedOrders = await Order.find({ customerId: user_id }).sort({ orderDate: - 1 })
-//         lastOrder = sortedOrders[0];
-
-//     } return ({ bag: { ...bag, productInBag }, order: lastOrder })
-// }
-// );
 
 bagRouter.get('/getBag/:userId', async (req, res) => {
     const { userId } = req.params;
-    // const token = jwt.sign({ user_id }, JWT_SECRET);
     const bag = await Bag.findOne({ customerId: userId, is_open: true }).exec();
     let productInBag;
     if (bag) {

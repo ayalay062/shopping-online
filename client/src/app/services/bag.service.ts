@@ -66,13 +66,4 @@ export class BagService {
      
   }
 
-
-
-  // findBagOrOrder(userId: string): Observable<{bag:IBag, order:IOrder}> {
-  //   return this.http.get<{bag:IBag, order:IOrder}>(`${BAG_API_URL}/findBagOrOrder/${userId}`,
-  //     {
-  //       headers: this.getHeaders(),
-  //     });
-  // }
-
 }

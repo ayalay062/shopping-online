@@ -96,22 +96,6 @@ export class BagEffects {
         )
     );
 
-    // findBagOrOrder$ = createEffect(() =>
-    //     this.actions$.pipe(
-    //         ofType(findBagOrOrder),
-    //         mergeMap((action) =>
-    //             this.selectedProductService.findBagOrOrder(action.userId)
-    //                 .pipe(
-    //                     map((response) => {
-    //                         return foundBagOrOrder(response);
-    //                     }),
-    //                     catchError((error: Error) => {
-    //                         return of({ type: 'error' });
-    //                     })
-    //                 )
-    //         )
-    //     )
-    // );
 };
 
 

@@ -12,7 +12,7 @@
 
         <button class="btn-gold" type="submit" [disabled]="!form.valid">LOGIN</button>
         <br>
-        <a class="a-cls" (click)="goToRegister()">I'm not registered yet</a>
+        <a class="a-cls" routerLink="/register">I'm not registered yet</a>
     </form>
 
     <div *ngIf="user">

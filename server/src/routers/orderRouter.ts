@@ -1,9 +1,6 @@
 
 import { Router } from 'express';
-import { User } from '../collections';
-import { Product } from '../collections/products';
-// import {userRouter} from '.'
-import { Bag, SelectedProduct } from '../collections/bag'
+import { Bag } from '../collections/bag'
 import { Order } from '../collections/order';
 
 export const orderRouter = Router();

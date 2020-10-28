@@ -19,10 +19,7 @@ var storage = multer.diskStorage({
 
 var upload = multer({
     storage: storage,
-    // limits: {
-    //     // Setting Image Size Limit to 2MBs
-    //     fileSize: 2000000
-    // },
+
     fileFilter(req: Request, file: any, cb: any) {
         if (!file.originalname.match(/\.(jpg|jpeg|png)$/gi)) {
             //Error 

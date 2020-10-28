@@ -27,7 +27,6 @@ import { RegisterComponent } from './register/register.component';
 import { IBagState, bagReducer } from '../app/store/reducers/bag.reducer';
 import { OrderComponent } from './order/order.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-// import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { ShoppingPageComponent } from './pages/shopping-page/shopping-page.component';
 import { OrderPageComponent } from './pages/order-page/order-page.component';
 import { RecieptComponent } from './reciept/reciept.component'
@@ -77,7 +76,6 @@ export interface IState {
     RegisterComponent,
     OrderComponent,
     HomePageComponent,
-    // SignupPageComponent,
     ShoppingPageComponent,
     OrderPageComponent,
     RecieptComponent,
@@ -88,9 +86,6 @@ export interface IState {
     OrderCreatedModalComponent,
     HighlightDirective,
     HeaderComponent,
-    // BrowserModule,
-    // BrowserAnimationsModule,
-    // MDBBootstrapModule.forRoot(),
   ],
   imports: [
     CommonModule,

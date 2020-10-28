@@ -4,7 +4,6 @@ import { hash, compare } from 'bcrypt';
 import { usersRouter } from '../routers/userRouter';
 import { IOrder, Order } from '../collections/order'
 import { IBag, Bag, SelectedProduct } from '../collections/bag'
-import expressJwt from 'express-jwt';
 
 // this interface represents a single user instance
 interface IUser extends Document {
@@ -83,7 +82,6 @@ UserSchema.statics.register = async (firstName: string, lastName: string, email:
 
 UserSchema.statics.findBagOrOrder = async (userId: string) => {
     const user_id = userId
-    // const token = jwt.sign({ user_id }, JWT_SECRET);
     const bag = await Bag.findOne({ customerId: user_id }).exec();
     let productInBag;
     if (bag)
@@ -97,7 +95,4 @@ UserSchema.statics.findBagOrOrder = async (userId: string) => {
 }
 
 export const User = model<IUser, IUserModel>('users', UserSchema);
-
-
-// robo mongo
 

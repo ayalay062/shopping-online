@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
 
   logout() {
     this.cookieService.delete('user')
+    localStorage.clear();
     this.store.dispatch(logout());
     this.store.select(state => state.user.user)
       .subscribe(user => {
@@ -64,7 +65,4 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  goToRegister() {
-   this.register.emit();
-  }
-}
+ }

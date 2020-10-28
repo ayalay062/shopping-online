@@ -65,18 +65,4 @@ export const bagReducer = createReducer(initialState,
         })
     }),
 
-
-
-// 2 functions
-    // on(foundBagOrOrder, (state, { bag, order }) => {
-    //     return ({
-    //         ...state,
-    //         bag,
-    //         order,
-    //     })
-    // }),
-
-
-
-    // ^4[0-9]{12}(?:[0-9]{3})?$
 )

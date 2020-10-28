@@ -8,8 +8,7 @@ export const productsRouter = Router();
 
 productsRouter.get('/', async (req, res) => {
     try {
-        const products = await Product.find()
-        // .populate("id_category")        
+        const products = await Product.find()      
         res.send(products);
     } catch (e) {
         res.status(500).send({e, massage: 'Server is unavailable, please try again later' });
@@ -63,14 +62,12 @@ productsRouter.get('/:productName', async (req, res) => {
 
 
 // -------ADMIN-------
-// if(User.role===admin)
 
 productsRouter.post('/', async (req, res) => {
     const { name, categoryId, price, image } = req.body;
     try {
         const product = new Product({ name, categoryId, price, image })
         const newProduct = await product.save();
-        // const findProduct = Product.findOne({ name, categoryId, price, image });
         res.send({ product: newProduct });
     } catch (e) {
         res.status(400).send(e.message);

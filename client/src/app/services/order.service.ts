@@ -31,14 +31,12 @@ export class OrderService {
     return this.http.post<IOrder>(ORDER_API_URL, { order },
       {
         headers: this.getHeaders(),
-        //  responseType: 'object',
       });
   }
   countOrders(): Observable<ICount> {
     return this.http.get<ICount >(ORDER_API_URL,
       {
         headers: this.getHeaders(),
-        //  responseType: 'object',
       });
   }
   countDates(date: Date): Observable<{count: number}> {

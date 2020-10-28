@@ -49,7 +49,6 @@ export class ProductService {
     return this.http.put<IProduct>(`${PRODUCTS_API_URL}/${productId}`, { update },
     {
       headers: this.getHeaders(),
-      // responseType: 'text',
     });
   }
   getProductsByCategory(categoryName): Observable<IProduct[]> {
