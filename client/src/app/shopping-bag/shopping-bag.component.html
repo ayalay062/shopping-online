@@ -2,21 +2,36 @@
 
     <div class="form-group" *ngIf="disChanges">
         <mat-form-field appearance="fill">
-            <mat-label>Search product:</mat-label>
+            <mat-label>Search Product:</mat-label>
             <input autocomplete="autocomplete" [(ngModel)]="searchText" type="text" matInput placeholder="search" autofocus/>
         </mat-form-field>
         <button class="btn-gold" (click)="search(productName.value)">SEARCH</button>
     </div>
-    <div id="bag">
-        <div>
-            <app-bag-product [searchText]="searchText" [disChanges]="this.disChanges" *ngFor="let product of products" [product]="product" class="bag-product"></app-bag-product>
+    <div *ngIf="!showBagProduct; else: hideBagProduct">
+        <mat-icon (click)="showBagProduct=true">keyboard_arrow_down</mat-icon> <span>Show shopping bag</span>
+    </div>
+    <div>
+        <div *ngIf="showBagProduct">
+            <div id="bag">
+
+                <app-bag-product [searchText]="searchText" [disChanges]="this.disChanges" *ngFor="let product of products" [product]="product" class="bag-product"></app-bag-product>
+            </div>
+
+
+            <br>
+            <h2><strong>Total price: {{total}}$</strong> </h2>
+            <div *ngIf="!disChanges">
+                <button class="btn-black" (click)="deleteAll()">Remove all products</button>
+                <button class="btn-black" style="margin-left: 50px;" (click)="goToOrder()">Order</button>
+            </div>
         </div>
     </div>
-    <br>
-    <h2><strong>Total price: {{total}}$</strong> </h2>
-    <div *ngIf="!disChanges">
-        <button class="btn-black" (click)="deleteAll()">Remove all products</button>
-        <button class="btn-black" style="margin-left: 50px;" (click)="goToOrder()">Order</button>
-    </div>
-</div>
-<h2 *ngIf="total == 0 && isModal" style="color:#ceb081">There are no products in your shopping cart</h2>
+    <ng-template #hideBagProduct>
+        <div>
+            <mat-icon (click)="showBagProduct=false">keyboard_arrow_up</mat-icon><span>Hide shopping bag</span>
+
+        </div>
+    </ng-template>
+
+
+    <h2 *ngIf="total == 0 && isModal" style="color:#ceb081">There are no products in your shopping cart</h2>

@@ -19,7 +19,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ShoppingBagComponent } from './shopping-bag/shopping-bag.component';
 import { ProductsListComponent } from './products-list/products-list.component';
-import { ProductComponent } from './product/product.component';
 import { BagProductComponent } from './bag-product/bag-product.component';
 import { LoginComponent } from './login/login.component';
 import { CreateProductComponent } from './create-product/create-product.component';
@@ -69,7 +68,6 @@ export interface IState {
     AppComponent,
     ShoppingBagComponent,
     ProductsListComponent,
-    ProductComponent,
     BagProductComponent,
     LoginComponent,
     CreateProductComponent,

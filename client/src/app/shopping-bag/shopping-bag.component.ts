@@ -19,7 +19,7 @@ export class ShoppingBagComponent implements OnInit {
   @Input() disChanges: boolean;
   total: number=0;
   searchText = '';
-
+  showBagProduct = true;
   isModal = false;
   constructor(private state: Store<IState>, private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: any,
