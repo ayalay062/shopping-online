@@ -4,11 +4,12 @@ import { ShoppingBagComponent } from '../shopping-bag/shopping-bag.component';
 import { IUser } from 'src/models/user.model';
 import { Store } from '@ngrx/store';
 import { IState } from '../app.module';
-import { ping, startLogin } from '../store/actions/user.actions';
-import { CookieService } from 'ngx-cookie-service';
-import { Observable } from 'rxjs';
+import { ping, startLogin, logout } from '../store/actions/user.actions';
 import { getBag } from '../store/actions/bag.actions';
 import { getOrder } from '../store/actions/order.actions';
+import { CookieService } from 'ngx-cookie-service';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-header',
@@ -23,21 +24,28 @@ export class HeaderComponent implements OnInit {
     }
     const userString = this.cookieService.get('user');
     if (userString && userString!== 'undefined') {
-      console.log("user", userString);
       const user: IUser = JSON.parse(userString);
       this.store.dispatch(startLogin({ email: user.email, password: user.password}));
       this.store.select(state => state.user.user)
-      .subscribe(user => {
-        if (user) {
-          this.store.dispatch(getBag({ userId: user._id }));
-          this.store.dispatch(getOrder({ userId: user._id }));
-        }
-      })
+        .subscribe(user => {
+          if (user) {
+            this.store.dispatch(getBag({ userId: user._id }));
+            this.store.dispatch(getOrder({ userId: user._id }));
+          }
+        })
     }
   }
   ngOnInit(): void {
     this.user$ = this.store.select(state => state.user.user);
   }
+  
+  logout() {
+    this.cookieService.delete('user');
+    localStorage.removeItem('token');
+    this.store.dispatch(logout());
+    // this.user$ = this.store.select(state => state.user.user);
+  }
+
 
   openDialogBasket() {
     const dialogRef = this.dialog.open(ShoppingBagComponent, {

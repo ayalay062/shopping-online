@@ -14,9 +14,15 @@
         <span class="link-header" routerLink="/register" routerLinkActive="active_link">Register |</span>
         <span class="link-header" routerLink="/login" routerLinkActive="active_link">Login </span>
 
-        <span class="div-name" *ngIf="user$ | async as user">Hello {{ user.firstName }}</span>
-        <span class="div-name" *ngIf="!user$ | async as user"> Guest</span>
+        <span class="div-name" *ngIf="user$ | async  as user; else guest">Hello {{user.firstName}}
+          <mat-icon class="logout" (click)="logout()">login</mat-icon>
+        </span>
+        <ng-template #guest>
+            <span class="div-name"> Hello Guest</span>
+        </ng-template>
+
 
         <mat-icon class="kupa" (click)="openDialogBasket()">local_grocery_store</mat-icon>
+
     </mat-toolbar>
 </div>

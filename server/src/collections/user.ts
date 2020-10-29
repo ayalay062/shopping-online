@@ -1,7 +1,6 @@
-import { model, Schema, Document, Model, Types, SchemaTypes } from 'mongoose';
+import { model, Schema, Document, Model } from 'mongoose';
 import { IProduct, ProductSchema, Product } from './products';
 import { hash, compare } from 'bcrypt';
-import { usersRouter } from '../routers/userRouter';
 import { IOrder, Order } from '../collections/order'
 import { IBag, Bag, SelectedProduct } from '../collections/bag'
 
@@ -66,6 +65,10 @@ UserSchema.statics.login = async (email: string, password: string): Promise<IUse
 
 // this is the implementation of IUserModel.register
 UserSchema.statics.register = async (firstName: string, lastName: string, email: string, password: string, city: string, street: string): Promise<IUser> => {
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+        throw new Error('email already in use');
+    }
     const hashedPassword = await hash(password, 10)
     const user = new User({
         firstName,
@@ -82,6 +85,7 @@ UserSchema.statics.register = async (firstName: string, lastName: string, email:
 
 UserSchema.statics.findBagOrOrder = async (userId: string) => {
     const user_id = userId
+    // const token = jwt.sign({ user_id }, JWT_SECRET);
     const bag = await Bag.findOne({ customerId: user_id }).exec();
     let productInBag;
     if (bag)
@@ -95,4 +99,5 @@ UserSchema.statics.findBagOrOrder = async (userId: string) => {
 }
 
 export const User = model<IUser, IUserModel>('users', UserSchema);
+
 

@@ -34,6 +34,7 @@ export class OrderComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private store: Store<IState>, private router: Router, private cookieService: CookieService, private orderService: OrderService) { }
   form: FormGroup;
+  today = new Date().toISOString().split('T')[0];
 
   buildForm () {
     this.form = this.fb.group({

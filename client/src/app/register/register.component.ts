@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup,  Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ofType, Actions } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { IState } from '../app.module';
-import { startRegister } from '../store/actions/user.actions';
 import { getBag } from '../store/actions/bag.actions';
 import { getOrder } from '../store/actions/order.actions';
+import { registerError, startRegister } from '../store/actions/user.actions';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ import { getOrder } from '../store/actions/order.actions';
 
 export class RegisterComponent implements OnInit {
   
-  constructor(private fb: FormBuilder, private store: Store<IState>, private router: Router) { }
+  constructor(private fb: FormBuilder, private store: Store<IState>, private router: Router, private actions$: Actions) { }
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
   let pass = group.get('password').value;
   let confirmPass = group.get('confirmPassowrd').value;
@@ -36,7 +37,10 @@ cities=[
 ];
 form = this.fb.group({
   email: this.fb.control('', [Validators.required, Validators.email]),
-  password: this.fb.control('', [Validators.required, Validators.minLength(3)]),
+  password: this.fb.control('', [
+    Validators.required,
+    Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')
+  ]),
   confirmPassowrd: this.fb.control('', [Validators.required])
 }, {validator: this.checkPasswords });
 
@@ -53,10 +57,15 @@ ngOnInit(): void {
 next() {
   this.step=2;
 }
+emailExistError: Error;
 register() {
   const { email,password} = this.form.value;
   const { firstName,lastName, city,street } = this.nextForm.value;
   this.store.dispatch(startRegister({firstName,lastName,  email,password, city,street}));
+  this.actions$.pipe(ofType(registerError)).subscribe(action => {
+    this.step = 1;
+    this.emailExistError = action.error;
+  });
   this.store.select(state => state.user.user).subscribe(user => {
     if (user) {
       this.store.dispatch(getBag({ userId: user._id }));

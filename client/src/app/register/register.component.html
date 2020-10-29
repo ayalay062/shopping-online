@@ -4,7 +4,7 @@
         <input autocomplete="autocomplete" formControlName="email" type="email" matInput placeholder="Email" />
         <mat-error *ngIf="form.get('email').errors?.required"> Email is required.</mat-error>
         <mat-error *ngIf="form.get('email').errors?.email"> Invalid email.</mat-error>
-
+        <mat-error *ngIf="emailExistError"> {{emailExistError.error}}</mat-error>
 
     </mat-form-field>
 
@@ -12,6 +12,8 @@
         <mat-label>Password</mat-label>
         <input autocomplete="autocomplete" formControlName="password" type="password" matInput placeholder="Password" />
         <mat-error *ngIf="form.get('password').errors?.required"> Password is required.</mat-error>
+        <mat-error *ngIf="form.get('password').errors?.pattern"> password must be at list 8 characters length, including capitals, lowercase letters, numbers and special characters
+        </mat-error>
 
 
     </mat-form-field>
@@ -22,6 +24,7 @@
         <mat-label> Confirm Password:</mat-label>
         <input autocomplete="autocomplete" type="password" formControlName="confirmPassowrd" matInput>
         <mat-error *ngIf="form.get('password').errors || form.get('confirmPassowrd').errors"> Password don't match.</mat-error>
+
     </mat-form-field>
 
 

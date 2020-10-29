@@ -22,7 +22,11 @@ usersRouter.post('/register', async (req, res) => {
         const token = jwt.sign({ userId: user._id }, JWT_SECRET);
         res.send({ token,  user});
     } catch (e) {
-        res.status(403).send(e.message);
+        if (e.message === 'email already in use') {
+            res.status(409).send(e.message);
+        } else {
+            res.status(500).send(e.message);
+        }
     }
 });
 
@@ -32,6 +36,7 @@ usersRouter.post('/login', async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await User.login(email, password);
+
         const userId = user._id
         const token = jwt.sign({ userId }, JWT_SECRET);
         res.send({ response: true, msg: "bag open", token, user })
