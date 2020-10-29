@@ -18,15 +18,11 @@ export class ShoppingPageComponent implements OnInit {
 
   user: IUser;
   selectedProduct: IProduct;
-  searchResults$: Observable<IProduct[]>;
 
   selectProduct(product) {
     this.selectedProduct = product;
   }
 
-  search(productName) {
-    this.searchResults$ =this.store.select(state => state.items.products.filter(p => p.name === productName))
-  }
 
   ngOnInit(): void {
     this.store.dispatch(getBag({ userId: JSON.parse(this.cookieService.get('user'))._id }))

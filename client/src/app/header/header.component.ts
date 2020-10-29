@@ -9,6 +9,7 @@ import { getBag } from '../store/actions/bag.actions';
 import { getOrder } from '../store/actions/order.actions';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,7 +19,7 @@ import { Observable } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   user$: Observable<IUser>;
-  constructor(private store: Store<IState>, private cookieService: CookieService,public dialog: MatDialog) {
+  constructor(private store: Store<IState>, private cookieService: CookieService,public dialog: MatDialog, private router: Router) {
     if (localStorage.getItem('token')) {
       this.store.dispatch(ping());
     }
@@ -43,6 +44,7 @@ export class HeaderComponent implements OnInit {
     this.cookieService.delete('user');
     localStorage.removeItem('token');
     this.store.dispatch(logout());
+    this.router.navigateByUrl("/login");
     // this.user$ = this.store.select(state => state.user.user);
   }
 

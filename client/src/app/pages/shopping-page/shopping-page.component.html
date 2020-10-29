@@ -1,15 +1,4 @@
-<nav>
-    <form>
-        <mat-form-field appearance="fill">
-            <mat-label>Search product:</mat-label>
-            <input autocomplete="autocomplete" #productName type="text" matInput placeholder="search" />
-        </mat-form-field>
-        <button class="btn-gold" (click)="search(productName.value)">SEARCH</button>
-        <div *ngIf="searchResults$ | async; let searchResults">
-            <p *ngFor="let result of searchResults">{{ result.name }}</p>
-        </div>
-    </form>
-</nav>
+<br>
 <div class="shopping-bag-wrapper">
 
 

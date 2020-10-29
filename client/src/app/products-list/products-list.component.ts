@@ -25,6 +25,21 @@ export class ProductsListComponent implements OnInit {
   productsByCategory: IProduct[];
   category:ICategory;
   bagId: string;
+  selectedProduct: IProduct;
+  searchText: string;
+
+filterProducts(){
+
+        this.productsByCategory=this.products.filter(p => p.categoryId === this.category._id
+          && p.name.toLowerCase()
+          .indexOf(this.searchText.toLowerCase()) > -1);
+}
+
+  search(productName) {
+    this.searchText =productName;
+  this.filterProducts();
+  }
+
   ngOnInit(): void {
     this.productService.getCategories()
       .subscribe(categories => {
@@ -37,6 +52,7 @@ export class ProductsListComponent implements OnInit {
       if (productsList && productsList.length) {
         this.products=productsList;
         this.productsByCategory=this.products.filter(p => p.categoryId === this.category._id);
+        
       }
     })
       })
@@ -46,8 +62,9 @@ export class ProductsListComponent implements OnInit {
   }
 
   changeCategory(e) {
-    this.productsByCategory=this.products.filter(p=>p.categoryId===e.target.value);
-    this.category=this.categories.find(c => c._id === e.target.value)
+    this.category=this.categories.find(c => c._id === e.value);
+    this.filterProducts();
+   
   }
   
   onProductClick(product) {
