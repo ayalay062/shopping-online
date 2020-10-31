@@ -3,15 +3,17 @@
 
     <mat-form-field appearance="fill">
         <mat-label>Search product:</mat-label>
-        <input autocomplete="autocomplete" #productName type="text" matInput placeholder="search" />
+        <input autocomplete="autocomplete" [(ngModel)]="searchText" type="text" matInput placeholder="search" />
     </mat-form-field>
-    <button class="btn-gold" (click)="search(productName.value)">SEARCH</button>
+    <button class="btn-gold" (click)="search()">SEARCH</button>
+    <mat-icon class="clear-btn" (click)="clear()">clear</mat-icon>
+
     <br>
     <mat-form-field appearance="fill">
         <mat-label>Select Category</mat-label>
         <mat-select [(value)]="category" (selectionChange)="changeCategory($event)">
-
-            <mat-option [value]="cat._id" *ngFor="let cat of categories" [selected]="cat._id===category._id">{{cat.name}}</mat-option>
+            <mat-option value="all">Select All</mat-option>
+            <mat-option [value]="cat" *ngFor="let cat of categories" [selected]="cat._id===category._id">{{cat.name}}</mat-option>
         </mat-select>
     </mat-form-field>
 </div>

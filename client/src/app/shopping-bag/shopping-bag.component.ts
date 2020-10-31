@@ -44,7 +44,7 @@ export class ShoppingBagComponent implements OnInit {
 
   }
   close() {
-  if(this.dialogRef){
+  if(this.dialogRef && this.dialogRef.close){
     this.dialogRef.close({ data: 'Order' });
   }
    

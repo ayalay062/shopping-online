@@ -14,7 +14,7 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Price</mat-label>
-        <input autocomplete="autocomplete" formControlName="price" type="text" matInput placeholder="price" />
+        <input autocomplete="autocomplete" formControlName="price" type="number" matInput placeholder="price" />
     </mat-form-field>
     <label>
         Image:
@@ -25,5 +25,6 @@
 
 
     <button class="btn-gold" type="submit" [disabled]="!form.valid">{{action.toUpperCase()}}</button>
+    <br>
+    <p>{{message}}</p>
 </form>
-<p>{{message}}</p>
